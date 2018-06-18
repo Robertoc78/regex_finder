@@ -46,3 +46,19 @@ print('Verified Numbers:')
 
 for z in verified_numbers:
     print(z)
+
+all_emails = []
+verified_emails = []
+
+matched_object = email_pattern.findall(some_string) # With the 'findall' method, the entire string is searched for all occurrences of the pattern, so we do not need to iterate through multiple 'pieces' of the text.
+if matched_object != None:
+    all_emails += matched_object
+
+for x in all_emails:
+    if x not in verified_emails:
+        verified_emails += [x]
+
+print('\nVerified Emails:')
+
+for y in verified_emails:
+    print(y)
