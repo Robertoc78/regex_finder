@@ -9,14 +9,12 @@ phone_pattern = re.compile(r'''(\d{3}|\(\d{3}\)) # This is for the area code, wi
 (\d{4})
 ''', re.VERBOSE) # 'VERBOSE' allows for the use comments in regex.
 
-
 email_pattern = re.compile(r'''[a-zA-Z0-9._-]+ # A new class was created to only look for letters, numbers, and some common email symbols. The '+' symbol means '1 or more' characters, since we need at least (1) character to create an email address.
 @ # This is simply the '@' symbol
 [a-zA-Z0-9._-]+ # This is for the domain name.
 \. # Here is the escaped '.' character.
 [a-zA-Z0-9]+''' # This is for the top-level domain name, e.g. '.com', '.edu'.
 , re.VERBOSE) # It is important to note that this pattern does not have groups because a regex method called 'findall' does not work well with them. 
-
 
 some_string = '''angel33@gmail.com 
 csjkcsa c 8182329081 (804)2374085
@@ -25,10 +23,8 @@ csjkcsa c 8182329081 (804)2374085
 223-808-1233 129.293.3232
 jflerres@yahoo.com''' # We will test this string.
 
-
 all_numbers = []
 verified_numbers = []
-
 
 for x in range(0, len(some_string)):
     piece = some_string[x: x + 14] # Every (14) characters of the line will be tested.
@@ -41,3 +37,12 @@ for x in range(0, len(some_string)):
             formatted_number = formatted_number[1:4] + formatted_number[5:12]
         
         all_numbers += [formatted_number]
+
+for y in all_numbers:
+    if y not in verified_numbers: # This is used to filter the present list, since we might have some duplicates.
+        verified_numbers += [y]
+
+print('Verified Numbers:')
+
+for z in verified_numbers:
+    print(z)
