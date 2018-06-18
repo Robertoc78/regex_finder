@@ -7,5 +7,21 @@ phone_pattern = re.compile(r'''(\d{3}|\(\d{3}\)) # This is for the area code, wi
 (\d{3}) # Here we have the next (3) numbers.
 (\s|-|\.)* # Here is the next space, dash, or period.
 (\d{4})
-)''', re.VERBOSE)
+''', re.VERBOSE) # 'VERBOSE' allows for the use comments in regex.
+
+
+email_pattern = re.compile(r'''[a-zA-Z0-9._-]+ # A new class was created to only look for letters, numbers, and some common email symbols. The '+' symbol means '1 or more' characters, since we need at least (1) character to create an email address.
+@ # This is simply the '@' symbol
+[a-zA-Z0-9._-]+ # This is for the domain name.
+\. # Here is the escaped '.' character.
+[a-zA-Z0-9]+''' # This is for the top-level domain name, e.g. '.com', '.edu'.
+, re.VERBOSE) # It is important to note that this pattern does not have groups because a regex method called 'findall' does not work well with them. 
+
+
+some_string = '''angel33@gmail.com 
+csjkcsa c 8182329081 (804)2374085
+(800) 377 8180 \n
+\n(808) 207 1086
+223-808-1233 129.293.3232
+jflerres@yahoo.com''' # We will test this string.
 
