@@ -25,3 +25,19 @@ csjkcsa c 8182329081 (804)2374085
 223-808-1233 129.293.3232
 jflerres@yahoo.com''' # We will test this string.
 
+
+all_numbers = []
+verified_numbers = []
+
+
+for x in range(0, len(some_string)):
+    piece = some_string[x: x + 14] # Every (14) characters of the line will be tested.
+    matched_object = phone_pattern.search(piece)
+
+    if matched_object != None: # Then, we have a matched number.
+        formatted_number = matched_object[1] + matched_object[3] + matched_object[5] # These indexes represent groups. Refer to the phone_pattern variable - 1, 3, and 5 will display numbers only, no characters, e.g. '-'.
+
+        if formatted_number[0] == '(' and formatted_number[4] == ')': # This block will remove any parantheses.
+            formatted_number = formatted_number[1:4] + formatted_number[5:12]
+        
+        all_numbers += [formatted_number]
